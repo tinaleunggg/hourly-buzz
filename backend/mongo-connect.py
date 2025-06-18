@@ -1,39 +1,38 @@
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
+from dotenv import load_dotenv
 import os
 import csv
 
+load_dotenv()
 uri = os.getenv("MONGO_URI")
 # Create a new client and connect to the server
 
-print(uri)
 client = MongoClient(uri, server_api=ServerApi('1'))
 # Send a ping to confirm a successful connection
 
+try:
+    client.admin.command('ping')
+    print("Pinged your deployment. You successfully connected to MongoDB!")
+except Exception as e:
+    print(e)
 
 
-# try:
-#     client.admin.command('ping')
-#     print("Pinged your deployment. You successfully connected to MongoDB!")
-# except Exception as e:
-#     print(e)
+db = client["gameDB"]
+players = db["players"]
+players.drop()
+items = db["items"]
+items.drop()
+friendships = db["friendships"]
+friendships.drop()
+wallets = db["wallets"]
+wallets.drop()
 
 
-# db = client["gameDB"]
-# players = db["players"]
-# players.drop()
-# items = db["items"]
-# items.drop()
-# friendships = db["friendships"]
-# friendships.drop()
-# wallets = db["wallets"]
-# wallets.drop()
-
-
-# players = db.create_collection("players")
-# items = db.create_collection("items")
-# friendships = db.create_collection("friendships")
-# wallets = db.create_collection("wallets")
+players = db.create_collection("players")
+items = db.create_collection("items")
+friendships = db.create_collection("friendships")
+wallets = db.create_collection("wallets")
 
 
 
