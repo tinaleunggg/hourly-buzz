@@ -29,10 +29,10 @@ wallets = db["wallets"]
 wallets.drop()
 
 
-players = db.create_collection("players")
-items = db.create_collection("items")
-friendships = db.create_collection("friendships")
-wallets = db.create_collection("wallets")
+# players = db.create_collection("players")
+# items = db.create_collection("items")
+# friendships = db.create_collection("friendships")
+# wallets = db.create_collection("wallets")
 
 
 
