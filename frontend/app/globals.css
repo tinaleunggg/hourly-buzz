@@ -1,1 +1,11 @@
 @import "tailwindcss";
+
+
+@layer components{    /* to create a new component class*/
+  .horizontal-card{
+    @apply m-10 gap-15 rounded-lg p-5 flex;
+  }
+  .horizontal-card h3{ 
+    @apply text-lg font-medium;
+}
+}
